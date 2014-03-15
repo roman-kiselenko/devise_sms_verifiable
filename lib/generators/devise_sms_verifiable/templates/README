@@ -1,0 +1,16 @@
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Because DeviseSmsConfirmable module uses special methods of your ApplicationController to check if sms confirmation
+      required and get sms secret you should provides ones. You can setup methods names in config/initializers/devise.rb, by default
+
+       config.sms_confirmation_method = :sms_confirmation?
+       config.sms_secret_method = :sms_secret
+
+  2. Because DeviseSmsConfirmable uses special field of authentication model to get phone number you should provide one.
+      You can setup field name in config/initializers/devise.rb, by default
+
+      config.sms_confirmation_field = :phone_for_sms
+
+===============================================================================

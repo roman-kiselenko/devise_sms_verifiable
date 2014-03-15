@@ -54,4 +54,12 @@ module Devise
 end
 
 Devise.add_module :sms_verifiable, controller: :sms_verifiables, model: 'devise_sms_verifiable/model' , route: :sms_verifiable
-
+#config.provider_silent = true
+#  config.provider_login = "kechinov"
+#  config.provider_password = "KZslIzwL"
+#  config.provider_from = "polis-test"
+#  config.phone_field = :phone
+#  config.phone_confirmation_field = :phone_confirm
+#  config.sms_confirmation_method = :sms_confirmation?
+#  config.sms_secret_method = :sms_secret
+#  config.sms_answer_field = :sms_answer
