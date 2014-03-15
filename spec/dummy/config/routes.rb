@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
 
-  mount DeviseSmsVerifiable::Engine => "/devise_sms_verifiable"
+  root "home#index"
+  devise_for :user, controllers:  {registrations: "registrations"}
+
 end

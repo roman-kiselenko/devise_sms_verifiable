@@ -7,15 +7,27 @@ require "devise_sms_verifiable/version"
 Gem::Specification.new do |s|
   s.name        = "devise_sms_verifiable"
   s.version     = DeviseSmsVerifiable::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of DeviseSmsVerifiable."
-  s.description = "TODO: Description of DeviseSmsVerifiable."
+  s.authors     = ["Kiselenko Roman"]
+  s.email       = %w(shindu666@gmail.com)
+  s.homepage    = ""
+  s.summary     = "DeviseSmsVerifiable it is simple fork devise_sms_activable for my project`s"
+  s.description = <<-DESC
+                     Description of DeviseSmsVerifiable:
+                     Module provide sms functions, easy to use and customize.
+                     DESC
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.0.3"
+  s.add_dependency "rails",  "~> 4.0.3"
+  s.add_dependency "devise", "~> 3.2"
+  s.add_runtime_dependency "rest_client"
 
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'ffaker'
+  s.add_development_dependency 'pry'
+  #s.add_development_dependency 'webmock'
   s.add_development_dependency "sqlite3"
 end
+
