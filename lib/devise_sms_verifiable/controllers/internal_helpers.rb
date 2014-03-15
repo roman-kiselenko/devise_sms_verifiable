@@ -4,6 +4,7 @@ module DeviseSmsVerifiable
       extend ActiveSupport::Concern
 
       def sms_check_settings
+        raise UnauthorizedAccess unless signed_in?(Devise::default_scope)
         raise PhoneFieldNotFound unless public_send("current_#{resource_name}").respond_to?(Devise::phone_field)
         raise PhoneFieldEmpty unless public_send("current_#{resource_name}").public_send(Devise::phone_field)
         raise SecretMethodNotFound unless InternalHelpers::valid_method?(self, Devise::sms_secret_method)
