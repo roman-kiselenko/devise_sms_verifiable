@@ -1,9 +1,8 @@
-class Devise::SmsVerifiableController < ApplicationController
-  include Devise::Controllers
+class Devise::SmsVerifiableController < DeviseController
   append_before_filter :sms_check_settings
-  helper_method :resource, :resource_name, :devise_mapping
 
-  def new;end
+  def new
+  end
 
   def create
     resource.sms_secret = public_send("current_#{resource_name}").public_send(Devise::sms_answer_field)
@@ -24,6 +23,12 @@ class Devise::SmsVerifiableController < ApplicationController
       provider.public_send(:send_sms, number, pass_word)
     end
     render :new
+  end
+
+  def resource
+    _resource = resource_class.new
+    instance_variable_set(:@user, _resource)
+    _resource
   end
 
   protected
