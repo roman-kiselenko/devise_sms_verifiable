@@ -1,16 +1,28 @@
 = DeviseSmsVerifiable
 
+If the devise is installed, run the generator to add configuration settings:
+
+  rails generate devise_sms_verifiable:install
+
+If devise not installed, run before generator:
+
+  rails generate devise:install
+
+For generate views run:
+
+  rails generate devise_sms_verifiable:views
+
 Define 2 methods in ApplicationController
 
   class ApplicationController < ActionController::Base
-    # Method for check need confirmation or no.
+    # Method for check need confirmation or no
     def sms_confirmation?
       return true if current_user && !current_user.phone_confirm? && current_user.phone
     end
 
-    # Method generate secret write to model and return secret.
+    # Method generate secret write to model and return secret
     def sms_secret
-      answer = (10..48).to_a.shuffle.take(4)*''
+      answer = (10..48).to_a.shuffle.take(4).join
       current_user.update(sms_answer: answer)
       answer
     end
@@ -20,56 +32,40 @@ Add field to model.
 
   class AddFieldToUsers < ActiveRecord::Migration
     def change
-      add_column :users, :phone, :string                          # Field in the model which phone number.
-      add_column :users, :sms_answer, :string                     # Field in the model which returns the correct answer.
-      add_column :users, :phone_confirm, :boolean, default: false # Field in the model which returns phone confirm or no.
+      # Field in the model which phone number
+      add_column :users, :phone, :string
+      # Field in the model which returns the correct answer
+      add_column :users, :sms_answer, :string
+      # Field in the model which returns phone confirm or no
+      add_column :users, :phone_confirm, :boolean, default: false
     end
   end
 
-===============================================================================
 
-Some setup you must do manually if you haven't yet(in config/initializers/devise.rb):
+= Available options
 
-  1. You need field in model for confirm phone(must be boolean).
+  phone_confirmation_field = :phone_confirm
 
-  config.phone_confirmation_field = :phone_confirm
+  sms_confirmation_method = :sms_confirmation?
 
-  2.You need define method for check sms confirmation. (in ApplicationController)
+  sms_secret_method = :sms_secret
 
-  config.sms_confirmation_method = :sms_confirmation?
+  sms_answer_field = :sms_answer
 
-  3. Need a method that generates, writes the word model, returns the secret word. (in ApplicationController)
+  phone_field = :phone
 
-  config.sms_secret_method = :sms_secret
+  SMS provider module(have default for STREAM-TELECOM) you can define own
+  Provider module should be a method :send_sms
 
-  4. Field in the model which returns the correct answer
+  sms_provider = DeviseSmsVerifiable::Provider
 
-  config.sms_answer_field = :sms_answer
+  provider_silent = true
 
-  6. Field in model which phone number
+  provider_login = :provider_login
 
-  config.phone_field = :phone
+  provider_password :provider_password
 
-  5. SMS provider module(have default for STREAM-TELECOM) you can define own
-     Provider module should be a method :send_sms
-
-  config.sms_provider = DeviseSmsVerifiable::Provider
-
-  7. Send sms silent for test
-
-  config.provider_silent = true
-
-  8. SMS provider login
-
-  config.provider_login = :provider_login
-
-  9. SMS provider password
-
-  config.provider_password :provider_password
-
-  10. SMS provider from
-
-  config.provider_from :provider_from
+  provider_from :provider_from
 
 ===============================================================================
 
