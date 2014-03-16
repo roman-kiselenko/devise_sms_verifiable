@@ -25,7 +25,7 @@ Some setup you must do manually if you haven't yet(in config/initializers/devise
   config.phone_field = :phone
 
   5. SMS provider module(have default for STREAM-TELECOM) you can define own
-     Provider module should be a method :sms_
+     Provider module should be a method :send_sms
 
   config.sms_provider = DeviseSmsVerifiable::Provider
 

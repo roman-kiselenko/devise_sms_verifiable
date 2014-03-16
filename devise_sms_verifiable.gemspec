@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DeviseSmsVerifiable::VERSION
   s.authors     = ["Kiselenko Roman"]
   s.email       = %w(shindu666@gmail.com)
-  s.homepage    = ""
+  s.homepage    = "https://github.com/fishbullet/devise_sms_verifiable"
   s.summary     = "DeviseSmsVerifiable it is simple fork devise_sms_activable for my project`s"
   s.description = <<-DESC
                      Description of DeviseSmsVerifiable:
