@@ -21,14 +21,17 @@ module Devise
   mattr_accessor :sms_answer_field
   @@sms_answer_field = :sms_answer
 
-  mattr_accessor :sms_provider
-  @@sms_provider = DeviseSmsVerifiable::Provider
-
   mattr_accessor :phone_field
   @@phone_field = :phone
 
   mattr_accessor :phone_confirmation_field
   @@phone_confirmation_field = :phone_confirm
+
+  mattr_accessor :successful_path
+  @@successful_path = '/'
+
+  mattr_accessor :sms_provider
+  @@sms_provider = DeviseSmsVerifiable::Provider
 
   mattr_accessor :provider_silent
   @@provider_silent = true

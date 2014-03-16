@@ -9,7 +9,7 @@ class Devise::SmsVerifiableController < DeviseController
     secret = params[:user][:sms_secret]
     if secret && resource.sms_secret && resource.valid_secret?(secret)
       public_send("current_#{resource_name}").public_send(:update, Hash[Devise::phone_confirmation_field, true])
-      redirect_to after_successful_phone_confirmation_path(resource)
+      redirect_to Devise::successful_path
     else
       render :new
     end
@@ -29,12 +29,6 @@ class Devise::SmsVerifiableController < DeviseController
     _resource = resource_class.new
     instance_variable_set(:@user, _resource)
     _resource
-  end
-
-  protected
-
-  def after_successful_phone_confirmation_path(resource)
-    root_path
   end
 end
 

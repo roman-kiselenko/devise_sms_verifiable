@@ -53,31 +53,43 @@ Add field to model.
     end
   end
 
-
 = Available options
 
-  phone_confirmation_field = :phone_confirm
+===============================================================================
 
-  sms_confirmation_method = :sms_confirmation?
+You need field in model for confirm phone(must be boolean).
+  config.phone_confirmation_field = :phone_confirm
 
-  sms_secret_method = :sms_secret
+You need define method for check sms confirmation. (in ApplicationController)
+  config.sms_confirmation_method = :sms_confirmation?
 
-  sms_answer_field = :sms_answer
+Need a method that generates, writes the word model, returns the secret word. (in ApplicationController)
+  config.sms_secret_method = :sms_secret
 
-  phone_field = :phone
+Field in the model which returns the correct answer
+  config.sms_answer_field = :sms_answer
 
-  SMS provider module(have default for STREAM-TELECOM) you can define own
-  Provider module should be a method :send_sms
+Field in model which phone number
+  config.phone_field = :phone
 
-  sms_provider = DeviseSmsVerifiable::Provider
+Path after successful confirmation
+  config.successful_path = '/'
 
-  provider_silent = true
+SMS provider module(have default for STREAM-TELECOM) you can define own
+Provider module should be a method :send_sms
+  config.sms_provider = DeviseSmsVerifiable::Provider
 
-  provider_login = :provider_login
+Send sms silent for test
+  config.provider_silent = true
 
-  provider_password :provider_password
+SMS provider login
+  config.provider_login = :provider_login
 
-  provider_from :provider_from
+SMS provider password
+  config.provider_password :provider_password
+
+SMS provider from
+  config.provider_from :provider_from
 
 ===============================================================================
 

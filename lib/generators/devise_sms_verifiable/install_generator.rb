@@ -27,6 +27,8 @@ module DeviseSmsVerifiable
   #config.phone_field = :phone
   # Field in model for confirm phone(must be boolean)
   #config.phone_confirmation_field = :phone_confirm
+  # Path after successful confirmation
+  #config.successful_path = '/'
   # SMS provider module(have default for STREAM-TELECOM)
   #config.sms_provider = DeviseSmsVerifiable::Provider
   # Send sms silent for test
