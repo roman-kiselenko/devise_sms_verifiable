@@ -88,7 +88,31 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
-  # ==> Configuration for :database_authenticatable
+  # ==> Configuration for :sms_verifiable
+  # Field in model for confirm phone(must be boolean)
+  #config.phone_confirmation_field = :phone_confirm
+  # Method for check sms confirmation. Define in ApplicationController
+  #config.sms_confirmation_method = :sms_confirmation?
+  # Method generate secret and write to model. Define in ApplicationController
+  #config.sms_secret_method = :sms_secret
+  # Attribut on model return rigth answer
+  #config.sms_answer_field = :sms_answer
+  # Field in model which phone number
+  #config.phone_field = :phone
+  # Field in model for confirm phone(must be boolean)
+  #config.phone_confirmation_field = :phone_confirm
+  # SMS provider module(have default for STREAM-TELECOM)
+  #config.sms_provider = DeviseSmsVerifiable::Provider
+  # Send sms silent for test
+  #config.provider_silent = true
+  # SMS provider login
+  #config.provider_login = ""
+  # SMS provider password
+  #config.provider_password = ""
+  # SMS provider from
+  #config.provider_from = ""
+
+# ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
   #

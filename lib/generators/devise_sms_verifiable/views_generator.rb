@@ -1,10 +1,14 @@
-require 'generators/devise/views_generator'
+require 'rails/generators/base'
 
 module DeviseSmsVerifiable
-  module Generators
-    class ViewsGenerator < Devise::Generators::ViewsGenerator
-      source_root File.expand_path("../../../../app/views", __FILE__)
-      desc 'Copies all DeviseSmsVerifiable views to your application.'
+  class ViewsGenerator < Rails::Generators::Base
+    source_root File.expand_path("../../../../app/views", __FILE__)
+
+    def copy_views_sms
+      exist_path = 'app/views/devise'
+       if File.exist? exist_path
+         directory('devise', exist_path)
+       end
     end
   end
 end

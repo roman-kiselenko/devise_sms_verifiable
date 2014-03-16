@@ -22,7 +22,7 @@ module Devise
 
   # Attribut on model return rigth answer
   mattr_accessor :sms_answer_field
-  @@sms_answer_field = ""
+  @@sms_answer_field = :sms_answer
 
   # SMS provider module(for STREAM-TELECOM)
   mattr_accessor :sms_provider
@@ -42,24 +42,15 @@ module Devise
 
   # SMS provider login
   mattr_accessor :provider_login
-  @@provider_login = ""
+  @@provider_login = 'kechinov'
 
   # SMS provider password
   mattr_accessor :provider_password
-  @@provider_password = ""
+  @@provider_password = 'KZslIzwL'
 
   # SMS provider from
   mattr_accessor :provider_from
-  @@provider_from = ""
+  @@provider_from = 'polis-test'
 end
 
 Devise.add_module :sms_verifiable, controller: :sms_verifiables, model: 'devise_sms_verifiable/model' , route: :sms_verifiable
-#config.provider_silent = true
-#  config.provider_login = "kechinov"
-#  config.provider_password = "KZslIzwL"
-#  config.provider_from = "polis-test"
-#  config.phone_field = :phone
-#  config.phone_confirmation_field = :phone_confirm
-#  config.sms_confirmation_method = :sms_confirmation?
-#  config.sms_secret_method = :sms_secret
-#  config.sms_answer_field = :sms_answer
