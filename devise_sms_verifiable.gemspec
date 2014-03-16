@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/fishbullet/devise_sms_verifiable"
   s.summary     = "DeviseSmsVerifiable it is simple fork devise_sms_activable for my project`s"
   s.description = <<-DESC
-                     Description of DeviseSmsVerifiable:
                      Module provide sms functions, easy to use and customize.
                      DESC
 
