@@ -1,5 +1,31 @@
 = DeviseSmsVerifiable
 
+Define 2 methods in ApplicationController
+
+  class ApplicationController < ActionController::Base
+    # Method for check need confirmation or no.
+    def sms_confirmation?
+      return true if current_user && !current_user.phone_confirm? && current_user.phone
+    end
+
+    # Method generate secret write to model and return secret.
+    def sms_secret
+      answer = (10..48).to_a.shuffle.take(4)*''
+      current_user.update(sms_answer: answer)
+      answer
+    end
+  end
+
+Add field to model.
+
+  class AddFieldToUsers < ActiveRecord::Migration
+    def change
+      add_column :users, :phone, :string                          # Field in the model which phone number.
+      add_column :users, :sms_answer, :string                     # Field in the model which returns the correct answer.
+      add_column :users, :phone_confirm, :boolean, default: false # Field in the model which returns phone confirm or no.
+    end
+  end
+
 ===============================================================================
 
 Some setup you must do manually if you haven't yet(in config/initializers/devise.rb):

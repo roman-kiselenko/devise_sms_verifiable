@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def sms_confirmation?
-    return true if current_user && current_user.phone
+    return true if current_user && !current_user.phone_confirm? && current_user.phone
   end
 
   def sms_secret
