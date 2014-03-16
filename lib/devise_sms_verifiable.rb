@@ -37,13 +37,13 @@ module Devise
   @@provider_silent = true
 
   mattr_accessor :provider_login
-  @@provider_login = 'kechinov'
+  @@provider_login = ''
 
   mattr_accessor :provider_password
-  @@provider_password = 'KZslIzwL'
+  @@provider_password = ''
 
   mattr_accessor :provider_from
-  @@provider_from = 'polis-test'
+  @@provider_from = ''
 end
 
 Devise.add_module :sms_verifiable, controller: :sms_verifiables, model: 'devise_sms_verifiable/model' , route: :sms_verifiable
