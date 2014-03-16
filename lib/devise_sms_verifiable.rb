@@ -12,43 +12,33 @@ require 'devise_sms_verifiable/engine'
 require 'devise_sms_verifiable/errors'
 
 module Devise
-  # Method for check sms confirmation
   mattr_accessor :sms_confirmation_method
   @@sms_confirmation_method = :sms_confirmation?
 
-  # Method generate secret and write to model
   mattr_accessor :sms_secret_method
   @@sms_secret_method = :sms_secret
 
-  # Attribut on model return rigth answer
   mattr_accessor :sms_answer_field
   @@sms_answer_field = :sms_answer
 
-  # SMS provider module(for STREAM-TELECOM)
   mattr_accessor :sms_provider
   @@sms_provider = DeviseSmsVerifiable::Provider
 
-  # Field in model with phone number
   mattr_accessor :phone_field
   @@phone_field = :phone
 
-  # Field in model for confirm phone(must be boolean)
   mattr_accessor :phone_confirmation_field
   @@phone_confirmation_field = :phone_confirm
 
-  # Send sms silent for test
   mattr_accessor :provider_silent
   @@provider_silent = true
 
-  # SMS provider login
   mattr_accessor :provider_login
   @@provider_login = 'kechinov'
 
-  # SMS provider password
   mattr_accessor :provider_password
   @@provider_password = 'KZslIzwL'
 
-  # SMS provider from
   mattr_accessor :provider_from
   @@provider_from = 'polis-test'
 end

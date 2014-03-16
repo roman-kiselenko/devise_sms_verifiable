@@ -1,3 +1,51 @@
 = DeviseSmsVerifiable
 
+===============================================================================
+
+Some setup you must do manually if you haven't yet(in config/initializers/devise.rb):
+
+  1. You need field in model for confirm phone(must be boolean).
+
+  config.phone_confirmation_field = :phone_confirm
+
+  2.You need define method for check sms confirmation. (in ApplicationController)
+
+  config.sms_confirmation_method = :sms_confirmation?
+
+  3. Need a method that generates, writes the word model, returns the secret word. (in ApplicationController)
+
+  config.sms_secret_method = :sms_secret
+
+  4. Field in the model which returns the correct answer
+
+  config.sms_answer_field = :sms_answer
+
+  6. Field in model which phone number
+
+  config.phone_field = :phone
+
+  5. SMS provider module(have default for STREAM-TELECOM) you can define own
+     Provider module should be a method :sms_
+
+  config.sms_provider = DeviseSmsVerifiable::Provider
+
+  7. Send sms silent for test
+
+  config.provider_silent = true
+
+  8. SMS provider login
+
+  config.provider_login = :provider_login
+
+  9. SMS provider password
+
+  config.provider_password :provider_password
+
+  10. SMS provider from
+
+  config.provider_from :provider_from
+
+===============================================================================
+
+
 This project rocks and uses MIT-LICENSE.
