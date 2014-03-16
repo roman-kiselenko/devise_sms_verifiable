@@ -47,5 +47,6 @@ Some setup you must do manually if you haven't yet(in config/initializers/devise
 
 ===============================================================================
 
+Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
