@@ -1,6 +1,6 @@
-# DeviseSmsVerifiable #
+## DeviseSmsVerifiable ##
 
-## Generators ##
+### Generators ###
 
 * If the `devise` is installed, run the generator to add configuration settings:
 <br>
@@ -18,7 +18,7 @@
 <br>
 `rails generate devise_sms_verifiable:views`
 
-## Model ##
+### Model ###
 
 Add module `:sms_verifiable` to model:
 ```
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
                                     :recoverable
 end
 ```
-## ApplicationController ##
+### ApplicationController ###
 
 Define 2 methods in `ApplicationController`
 ```
@@ -47,7 +47,7 @@ Define 2 methods in `ApplicationController`
     end
   end
 ```
-## Available options ##
+### Available options ###
 
 * * *
 
@@ -75,8 +75,8 @@ Define 2 methods in `ApplicationController`
 <br>
 `config.successful_path = '/'`
 
-* SMS provider module(have default for STREAM-TELECOM) you can define own
-Provider module should be a method `:send_sms`
+* SMS provider module(have default for STREAM-TELECOM)  
+you can define own. Provider module should be a method `:send_sms`
 <br>
 `config.sms_provider = DeviseSmsVerifiable::Provider`
 
