@@ -1,54 +1,37 @@
 require 'rails/generators/base'
 
 module DeviseSmsVerifiable
-  class InstallGenerator < Rails::Generators::Base
-    source_root File.expand_path("../templates", __FILE__)
+  class MigrationGenerator < Rails::Generators::Base
 
     def add_migrations
-      default_migration_path = ""
-      #if File.exist?(devise_initializer_path)
-        #old_content = File.read(devise_initializer_path)
-
-        #if old_content.match(Regexp.new(/^\s# ==> Configuration for :sms_verifiable\n/))
-          #false
-        #else
-          #inject_into_file(devise_initializer_path, before: "# ==> Configuration for :database_authenticatable\n") do
-#<<-CONTENT
-## ==> Configuration for :sms_verifiable
-  ## Field in model for confirm phone(must be boolean)
-  ##config.phone_confirmation_field = :phone_confirm
-  ## Method for check sms confirmation. Define in ApplicationController
-  ##config.sms_confirmation_method = :sms_confirmation?
-  ## Method generate secret and write to model. Define in ApplicationController
-  ##config.sms_secret_method = :sms_secret
-  ## Attribut on model return rigth answer
-  ##config.sms_answer_field = :sms_answer
-  ## Field in model which phone number
-  ##config.phone_field = :phone
-  ## Field in model for confirm phone(must be boolean)
-  ##config.phone_confirmation_field = :phone_confirm
-  ## Path after successful confirmation
-  ##config.successful_path = '/'
-  ## SMS provider module(have default for STREAM-TELECOM)
-  ##config.sms_provider = DeviseSmsVerifiable::Provider
-  ## Send sms silent for test
-  ##config.provider_silent = true
-  ## SMS provider login
-  ##config.provider_login = ""
-  ## SMS provider password
-  ##config.provider_password = ""
-  ## SMS provider from
-  ##config.provider_from = ""
-  #\n
-#CONTENT
-          #end
-        #end
-      #end
+      table_name = Devise::default_scope.to_s.pluralize
+      exist_migration = Dir.glob('db/migrate/*_devise_sms_verifiable_add_to_*')
+      exist_migration.any? ? p("Check db/migrate, look like have sms verifiable migration") : nil
+      if exist_migration.blank?
+        migration_path = "db/migrate/#{Time.now.strftime("%Y%m%d%H%M%S")}_devise_sms_verifiable_add_to_#{table_name}.rb"
+        migration_template = <<-RUBY
+class DeviseSmsVerifiableAddTo#{table_name.camelize} < ActiveRecord::Migration
+  def self.up
+    change_table :#{table_name} do |t|
+      # Field in the model which phone number
+      t.string   :phone
+      # Field in the model which returns the correct answer
+      t.string   :sms_answer
+      # Field in the model which returns phone confirm or no
+      t.boolean  :phone_confirm, default: false
     end
+  end
 
-    #def show_readme
-      #readme "README"
-    #end
+  def self.down
+    remove_column :#{table_name}, :phone
+    remove_column :#{table_name}, :sms_answer
+    remove_column :#{table_name}, :phone_confirm
+  end
+end
+RUBY
+        create_file(migration_path, migration_template)
+      end
+    end
   end
 end
 

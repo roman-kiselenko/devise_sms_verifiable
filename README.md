@@ -10,6 +10,10 @@
 <br>
 `rails generate devise:install`
 
+* Generate migration:
+<br>
+`rails generate devise_sms_verifiable:migration`
+
 * For generate views run:
 <br>
 `rails generate devise_sms_verifiable:views`
@@ -66,11 +70,11 @@ Add field to model.
 <br>
 `config.phone_confirmation_field = :phone_confirm`
 
-* You need define method for check sms confirmation. (in `ApplicationController`)
+* You need define method for check sms confirmation.
 <br>
 `config.sms_confirmation_method = :sms_confirmation?`
 
-* Need a method that generates, writes the word model, returns the secret word. (in `ApplicationController`)
+* Need a method that generates, writes the word model, returns the secret word.
 <br>
 `config.sms_secret_method = :sms_secret`
 
