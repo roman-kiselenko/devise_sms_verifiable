@@ -47,21 +47,6 @@ Define 2 methods in `ApplicationController`
     end
   end
 ```
-## Migration ##
-
-Add field to model.
-```
-  class AddFieldToUsers < ActiveRecord::Migration
-    def change
-      # Field in the model which phone number
-      add_column :users, :phone, :string
-      # Field in the model which returns the correct answer
-      add_column :users, :sms_answer, :string
-      # Field in the model which returns phone confirm or no
-      add_column :users, :phone_confirm, :boolean, default: false
-    end
-  end
-```
 ## Available options ##
 
 * * *
