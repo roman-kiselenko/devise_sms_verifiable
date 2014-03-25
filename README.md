@@ -1,5 +1,10 @@
 ## DeviseSmsVerifiable ##
 Module provide sms functions, easy to use and customize.
+```rbcon
+# Developed and tested on:
+Ruby 2.1.0
+Rails 4.0.3
+```
 ## Install
 * Add to `Gemfile` and `bundle install`
 ```ruby
@@ -27,10 +32,9 @@ user_sms_path	           POST	 /user/sms(.:format)	           devise/sms_verifia
 new_user_sms_path	       GET	 /user/sms/new(.:format)	       devise/sms_verifiable#new
 ```
 ## How works ##
-
+Method(:sms_secret) generate secret and write to model , must return secret word,
+devise_sms_verifiable controller use this method for generate secret.
 ```ruby
-# Method generate secret write to model , must return secret
-# devise_sms_verifiable controller use this method for generate secret
 class ApplicationController < ActionController::Base
   def sms_secret
     answer = (10..48).to_a.shuffle.take(4).join
@@ -38,8 +42,9 @@ class ApplicationController < ActionController::Base
     answer
   end
 end
-
-# Add several fields to model through generator
+```
+Add several fields to model through generator
+```ruby
 < User id: 1,
 email: "shindu666<bla>gmail.com",
 created_at: "2014-03-25 15:24:30",
@@ -117,6 +122,4 @@ config.provider_from :provider_from
 Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
-
-
 
