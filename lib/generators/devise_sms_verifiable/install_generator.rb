@@ -17,9 +17,7 @@ module DeviseSmsVerifiable
 # ==> Configuration for :sms_verifiable
   # Field in model for confirm phone(must be boolean)
   #config.phone_confirmation_field = :phone_confirm
-  # Method for check sms confirmation. Define in ApplicationController
-  #config.sms_confirmation_method = :sms_confirmation?
-  # Method generate secret and write to model. Define in ApplicationController
+   # Method generate secret and write to model. Define in ApplicationController
   #config.sms_secret_method = :sms_secret
   # Attribut on model return rigth answer
   #config.sms_answer_field = :sms_answer

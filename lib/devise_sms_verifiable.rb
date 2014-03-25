@@ -12,9 +12,6 @@ require 'devise_sms_verifiable/engine'
 require 'devise_sms_verifiable/errors'
 
 module Devise
-  mattr_accessor :sms_confirmation_method
-  @@sms_confirmation_method = :sms_confirmation?
-
   mattr_accessor :sms_secret_method
   @@sms_secret_method = :sms_secret
 

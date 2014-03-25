@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def sms_confirmation?
-    return true if current_user && !current_user.phone_confirm? && current_user.phone
-  end
-
   def sms_secret
     answer = (10..48).to_a.shuffle.take(4)*''
     current_user.update(sms_answer: answer)
