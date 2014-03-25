@@ -1,5 +1,31 @@
 ## DeviseSmsVerifiable ##
-
+Module provide sms functions, easy to use and customize.
+## Install
+* Add to `Gemfile` and `bundle install`
+```ruby
+gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
+```
+* Run generators
+__If the devise is installed,
+run the generator to add configuration settings
+to Devise initializer__:
+```irb
+$ rails generate devise_sms_verifiable:install
+```
+* Generate migration:
+```irb
+$ rails generate devise_sms_verifiable:migration
+```
+* For generate views run:
+```irb
+$ rails generate devise_sms_verifiable:views
+```
+After successful instalation you should have routes ```rake routes```
+```irb
+send_pass_user_sms_path  POST	 /user/sms/send_pass(.:format)	 devise/sms_verifiable#send_pass
+user_sms_path	           POST	 /user/sms(.:format)	           devise/sms_verifiable#create
+new_user_sms_path	       GET	 /user/sms/new(.:format)	       devise/sms_verifiable#new
+```
 ## How works ##
 
 ```ruby
@@ -23,24 +49,10 @@ sms_answer: 1245,                  <----------| answer field
 phone_confirm: false >             <----------| need confirmation?
 ```
 ### Generators ###
-
-* If the ***devise*** is installed, run the generator to add configuration settings:
-* add devise_sms_verifiable variables to Devise initializer
-```irb
-$ rails generate devise_sms_verifiable:install
-```
 * If ***devise*** not installed, run before generator
 *  add Devise initializer:
 ```irb
 $ rails generate devise:install
-```
-* Generate migration:
-```irb
-$ rails generate devise_sms_verifiable:migration
-```
-* For generate views run:
-```irb
-$ rails generate devise_sms_verifiable:views
 ```
 ### Model ###
 
@@ -105,5 +117,6 @@ config.provider_from :provider_from
 Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
+
 
 
