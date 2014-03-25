@@ -95,10 +95,16 @@ config.phone_field = :phone
 config.successful_path = '/'
 ```
 * SMS provider module(have default for STREAM-TELECOM)
-you can define own. Provider module should be a method `:send_sms`
+you can define own. Provider module should be a method `:send_sms`.
 ```ruby
+# You can implement own provider module
+# you module should be a method YouAwesomeProvider.send_sms(number_phone, message)
 config.sms_provider = DeviseSmsVerifiable::Provider
 ```
+
+* * *
+Gem include default Provider, below some settings
+
 * Send sms silent for test
 ```ruby
 config.provider_silent = true
@@ -120,5 +126,4 @@ config.provider_from :provider_from
 Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
-
 
