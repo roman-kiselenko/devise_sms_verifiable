@@ -1,19 +1,19 @@
 ## DeviseSmsVerifiable ##
-Module provide sms functions, easy to use and customize.
+Just simple module for [Devise](https://github.com/plataformatec/devise) provide sms functions, easy to use and customize.
 ```rbcon
 # Developed and tested on:
 Ruby 2.1.0
 Rails 4.0.3
+Devise 3.2
 ```
 ## Install
 * Add to `Gemfile` and `bundle install`
 ```ruby
 gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
 ```
-* Run generators
-__If the Devise is installed,
+* If the [Devise](https://github.com/plataformatec/devise) is installed,
 run the generator to add configuration settings
-to Devise initializer__ if not use [this generators](https://github.com/fishbullet/devise_sms_verifiable#generators):
+to [Devise](https://github.com/plataformatec/devise) initializer if not use [this generators](https://github.com/fishbullet/devise_sms_verifiable#generators):
 ```irb
 $ rails generate devise_sms_verifiable:install
 ```
