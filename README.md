@@ -11,9 +11,9 @@ Rails 4.0.3
 gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
 ```
 * Run generators
-__If the devise is installed,
+__If the Devise is installed,
 run the generator to add configuration settings
-to Devise initializer__:
+to Devise initializer__ if not use [this generators](https://github.com/fishbullet/devise_sms_verifiable#generators):
 ```irb
 $ rails generate devise_sms_verifiable:install
 ```
@@ -54,8 +54,6 @@ sms_answer: 1245,                  <----------| answer field
 phone_confirm: false >             <----------| need confirmation?
 ```
 ### Generators ###
-* If ***devise*** not installed, run before generator
-*  add Devise initializer:
 ```irb
 $ rails generate devise:install
 ```
@@ -122,4 +120,5 @@ config.provider_from :provider_from
 Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
+
 
