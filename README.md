@@ -1,5 +1,7 @@
 ## DeviseSmsVerifiable ##
-Just simple module for [Devise](https://github.com/plataformatec/devise) provide sms functions, easy to use and customize.
+This is alpha-version
+
+Just a simple module for [Devise](https://github.com/plataformatec/devise) provide sms functions, easy to use and customize.
 ```rbcon
 # Developed and tested on:
 Ruby 2.1.0
@@ -11,9 +13,10 @@ Devise 3.2
 ```ruby
 gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
 ```
-* If the [Devise](https://github.com/plataformatec/devise) is installed,
+* If [Devise](https://github.com/plataformatec/devise) is installed,
 run the generator to add configuration settings
-to [Devise](https://github.com/plataformatec/devise) initializer if not use [this generators](https://github.com/fishbullet/devise_sms_verifiable#generators):
+to [Devise](https://github.com/plataformatec/devise) initializer.
+Otherwise use [this generators](https://github.com/fishbullet/devise_sms_verifiable#generators):
 ```irb
 $ rails generate devise_sms_verifiable:install
 ```
@@ -21,19 +24,20 @@ $ rails generate devise_sms_verifiable:install
 ```irb
 $ rails generate devise_sms_verifiable:migration
 ```
-* For generate views run:
+* To generate views run:
 ```irb
 $ rails generate devise_sms_verifiable:views
 ```
-After successful instalation you should have routes ```rake routes```
+After successful installation you should have routes ```rake routes```
 ```irb
 send_pass_user_sms_path  POST	 /user/sms/send_pass(.:format)	 devise/sms_verifiable#send_pass
 user_sms_path	           POST	 /user/sms(.:format)	           devise/sms_verifiable#create
 new_user_sms_path	       GET	 /user/sms/new(.:format)	       devise/sms_verifiable#new
 ```
-## How works ##
-Method(:sms_secret) generate secret and write to model , must return secret word,
-devise_sms_verifiable controller use this method for generate secret.
+## How it works ##
+Method(:sms_secret) generates secret word and writes it to the model, returns secret word.
+Devise_sms_verifiable controller uses this method to generate secret word.
+Add this code to ApplicationController:
 ```ruby
 class ApplicationController < ActionController::Base
   def sms_secret
@@ -43,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
-Add several fields to model through generator
+Migration will add several fields to model
 ```ruby
 < User id: 1,
 email: "shindu666<bla>gmail.com",
@@ -52,10 +56,6 @@ updated_at: "2014-03-25 15:26:44",
 phone: "+79818327398",             <----------| phone field
 sms_answer: 1245,                  <----------| answer field
 phone_confirm: false >             <----------| need confirmation?
-```
-### Generators ###
-```irb
-$ rails generate devise:install
 ```
 ### Model ###
 
@@ -68,16 +68,15 @@ class User < ActiveRecord::Base
                                     :recoverable
 end
 ```
-
 ### Available options ###
 
 * * *
 
-* You need field in model for confirm phone(must be boolean).
+* Boolean field in model for phone confirmation
 ```ruby
 config.phone_confirmation_field = :phone_confirm
 ```
-* Need a method that generates, writes the word model, returns the secret word.
+* Method that generates, writes the word in the model, returns the secret word.
 ```ruby
 config.sms_secret_method = :sms_secret
 ```
@@ -85,7 +84,7 @@ config.sms_secret_method = :sms_secret
 ```ruby
 config.sms_answer_field = :sms_answer
 ```
-* Field in model which phone number
+* Field in model with phone number
 ```ruby
 config.phone_field = :phone
 ```
@@ -93,20 +92,18 @@ config.phone_field = :phone
 ```ruby
 config.successful_path = '/'
 ```
-* SMS provider module(have default for STREAM-TELECOM)
-you can define own. Provider module should be a method `:send_sms`.
+* SMS provider module(there is default module for STREAM-TELECOM)
+you can define your own. Provider module should contain method `:send_sms`.
 ```ruby
-## You can implement own provider module
+## You can  own provider module
 ## in module should be a method
-# YouAwesomeProvider.send_sms(number_phone, message)
+## YouAwesomeProvider.send_sms(number_phone, message)
 config.sms_provider = DeviseSmsVerifiable::Provider
 ```
-
 * * *
+Module includes default Provider, some settings below:
 
-Gem include default Provider, below some settings
-
-* Send sms silent for test
+* Send sms silently for test
 ```ruby
 config.provider_silent = true
 ```
@@ -123,6 +120,12 @@ config.provider_password :provider_password
 config.provider_from :provider_from
 ```
 * * *
+
+### Generators ###
+```irb
+$ rails generate devise:install
+```
+
 Kiselenko Roman 2014-03-16
 This project rocks and uses MIT-LICENSE.
 
