@@ -105,9 +105,9 @@ This module is very customizable, check it out:
    config.successful_path = '/'
    ```
 7. SMS provider module
- 
+
    There is a default module for STREAM-TELECOM, but you can define your own.<br>
-   
+
    ```ruby
    ## You can define other provider module.
    ## It should have a method :send_sms with 2 args
@@ -125,17 +125,17 @@ This module is very customizable, check it out:
 2. SMS provider login
 
    ```ruby
-   config.provider_login = :provider_login
+   config.provider_login = 'provider_login'
    ```
 3. SMS provider password
 
    ```ruby
-   config.provider_password = :provider_password
+   config.provider_password = 'provider_password'
    ```
 4. SMS provider 'from' field
 
    ```ruby
-   config.provider_from = :provider_from
+   config.provider_from = 'provider_from'
    ```
 
 * * *
