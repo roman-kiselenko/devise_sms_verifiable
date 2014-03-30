@@ -40,24 +40,7 @@ to [Devise](https://github.com/plataformatec/devise) initializer:
    sms_answer: 1245,                  <----------| answer field
    phone_confirm: false >             <----------| need confirmation?
    ```
-4. Add code to ApplicationController
-
-   ```ruby
-   class ApplicationController < ActionController::Base
-     ...
-     def sms_secret
-       answer = (10..48).to_a.shuffle.take(4).join
-       current_user.update(sms_answer: answer)
-       answer
-     end
-     ...
-   end
-   ```
-   
-   Method(:sms_secret) generates secret word, writes it to the model and returns secret word.<br>
-   Devise::SmsVerifiableController uses this method to generate secret word.
-   
-5. Configure model
+4. Configure model
 
    ```ruby
    class User < ActiveRecord::Base
