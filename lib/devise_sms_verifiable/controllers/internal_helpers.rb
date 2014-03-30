@@ -8,7 +8,6 @@ module DeviseSmsVerifiable
         end
         raise PhoneFieldNotFound unless public_send("current_#{Devise::default_scope}").respond_to?(Devise::phone_field)
         raise PhoneFieldEmpty unless public_send("current_#{Devise::default_scope}").public_send(Devise::phone_field)
-        raise SecretMethodNotFound unless InternalHelpers::valid_method?(self, Devise::sms_secret_method)
         raise ValidSendSmsMethodNotFound unless InternalHelpers::valid_method?(Devise::sms_provider, :send_sms)
       rescue DeviseSmsVerifiableError, ArgumentError
         raise "DeviseSmsVerifiableError module error: #{$!.message} "
