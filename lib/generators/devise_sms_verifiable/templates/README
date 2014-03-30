@@ -5,9 +5,6 @@ Some setup you must do manually if you haven't yet(in config/initializers/devise
   You need field in model for confirm phone(must be boolean).
   config.phone_confirmation_field = :phone_confirm
 
-  Need a method that generates, writes the word model, returns the secret word. (in ApplicationController)
-  config.sms_secret_method = :sms_secret
-
   Field in the model which returns the correct answer
   config.sms_answer_field = :sms_answer
 

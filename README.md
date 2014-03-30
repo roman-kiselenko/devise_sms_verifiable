@@ -67,11 +67,6 @@ This module is very customizable, check it out:
    ```ruby
    config.phone_confirmation_field = :phone_confirm
    ```
-3. Method that generates, writes the secret word in the model, returns the secret word.
-
-   ```ruby
-   config.sms_secret_method = :sms_secret
-   ```
 4. Field returning the correct answer
 
    ```ruby
