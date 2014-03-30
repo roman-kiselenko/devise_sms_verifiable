@@ -1,5 +1,5 @@
 class Devise::SmsVerifiableController < DeviseController
-  append_before_filter :sms_check_settings
+  append_before_filter :sms_check_settings!
 
   def new
   end
@@ -18,12 +18,14 @@ class Devise::SmsVerifiableController < DeviseController
   def send_pass
     number = public_send("current_#{resource_name}").public_send(Devise::phone_field)
     provider = Devise::sms_provider
-    pass_word = public_send(Devise::sms_secret_method)
+    pass_word = public_send("current_#{resource_name}").generate_token!
     if [number, provider, pass_word].all?
       provider.public_send(:send_sms, number, pass_word)
     end
     render :new
   end
+
+  protected
 
   def resource
     _resource = resource_class.new

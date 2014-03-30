@@ -102,7 +102,7 @@ Devise.setup do |config|
   # SMS provider module(have default for STREAM-TELECOM)
   #config.sms_provider = DeviseSmsVerifiable::Provider
   # Send sms silent for test
-  #config.provider_silent = true
+  config.provider_silent = false
   # SMS provider login
   #config.provider_login = ""
   # SMS provider password
