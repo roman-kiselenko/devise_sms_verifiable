@@ -1,12 +1,11 @@
 class DeviseSmsVerifiableAddToUsers < ActiveRecord::Migration
   def self.up
     change_table :users do |t|
-      # Field in the model which phone number
       t.string   :phone
-      # Field in the model which returns the correct answer
       t.string   :sms_answer
-      # Field in the model which returns phone confirm or no
       t.boolean  :phone_confirm, default: false
+      t.datetime  :sms_token_sent_at
+      t.datetime  :sms_token_confirmed_at
     end
   end
 
@@ -14,5 +13,7 @@ class DeviseSmsVerifiableAddToUsers < ActiveRecord::Migration
     remove_column :users, :phone
     remove_column :users, :sms_answer
     remove_column :users, :phone_confirm
+    remove_column :users, :sms_token_sent_at
+    remove_column :users, :sms_token_confirmed_at
   end
 end

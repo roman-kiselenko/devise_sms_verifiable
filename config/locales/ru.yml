@@ -1,0 +1,10 @@
+ru:
+  errors:
+     messages:
+       sms_token_invalid: "Неверный код"
+  devise:
+    sms_verifiable:
+      send_token: 'Выслано SMS с кодом подтверждения на номер %{phone}.'
+      sms_token_invalid: 'Неверный код'
+      confirmed: 'Спасибо Ваш номер подтверждён'
+      sms_activation_required: 'Подтвердите аккаунт с помощью телефона'

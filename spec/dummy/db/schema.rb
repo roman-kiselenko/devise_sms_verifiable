@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322171056) do
+ActiveRecord::Schema.define(version: 20140331181921) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20140322171056) do
     t.string   "phone"
     t.string   "sms_answer"
     t.boolean  "phone_confirm",          default: false
+    t.datetime "sms_token_sent_at"
+    t.datetime "sms_token_confirmed_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

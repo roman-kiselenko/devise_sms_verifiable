@@ -1,0 +1,10 @@
+en:
+  errors:
+     messages:
+       sms_token_invalid: "Invalid token"
+  devise:
+    sms_verifiable:
+      send_token: 'An activation token was sent by SMS to %{phone}.'
+      sms_token_invalid: 'The sms token provided is not valid!'
+      confirmed: 'Your account has been activated.'
+      sms_activation_required: 'SMS Activation is required'

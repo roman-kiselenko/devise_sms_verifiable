@@ -1,8 +1,9 @@
+<%= flash[:notice] if flash[:notice] %>
 <h2>Sms verifiable</h2>
 <%= form_for(resource, :as => resource_name, :url => sms_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
     <p><%= f.label :sms_secret %><br />
-    <%= f.text_field :sms_secret %></p>
+    <%= f.text_field :sms_secret, value: nil %></p>
     <p><%= f.submit "send" %></p>
   <% end %>
 <%= button_to 'send sms', public_send("send_pass_#{resource_name}_sms_path"), data: { method: :post } %>
