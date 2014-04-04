@@ -11,8 +11,7 @@ module Devise
 
       def sms_confirm!
         token = generate_token!
-        public_send(:update, Hash[Devise::sms_answer_field, token])
-        public_send(:update, Hash[:sms_token_sent_at, DateTime.now])
+        public_send(:update, Hash[Devise::sms_answer_field, token, :sms_token_sent_at, DateTime.now])
         token
       end
 
