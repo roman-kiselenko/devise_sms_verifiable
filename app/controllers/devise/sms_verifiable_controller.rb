@@ -9,8 +9,7 @@ class Devise::SmsVerifiableController < DeviseController
     resource.sms_secret = public_send("current_#{resource_name}").public_send(Devise::sms_answer_field)
     secret = params[:user][:sms_secret]
     if secret && resource.sms_secret && resource.valid_token?(secret)
-      public_send("current_#{resource_name}").public_send(:update, Hash[Devise::phone_confirmation_field, true])
-      public_send("current_#{resource_name}").public_send(:update, Hash[:sms_token_confirmed_at, DateTime.now])
+      public_send("current_#{resource_name}").public_send(:update, Hash[Devise::phone_confirmation_field, true, :sms_token_confirmed_at, DateTime.now])
       redirect_to Devise::successful_path
     else
       set_flash_message :notice, :sms_token_invalid
