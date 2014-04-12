@@ -91,7 +91,7 @@ This module is very customizable, check it out:
    ## It should have a method :send_sms with 2 args
    ## e.g.:
    ## YourAwesomeProvider.send_sms(number_phone, message)
-   config.sms_provider = DeviseSmsVerifiable::YourAwesomeProvider
+   config.sms_provider = YourAwesomeProvider
    ```
 
 ## Configure default provider
