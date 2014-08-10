@@ -118,6 +118,13 @@ This module is very customizable, check it out:
 
 * * *
 
+## TODO
+1. Add helper methods to controller
+
+2. Add `proc` for generate token
+
+* * *
+
 Kiselenko Roman 2014-03-16
 
 This project rocks and uses MIT-LICENSE.
