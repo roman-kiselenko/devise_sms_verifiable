@@ -1,4 +1,6 @@
 ## DeviseSmsVerifiable ##
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/fishbullet/devise_sms_verifiable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Just a simple module for [Devise](https://github.com/plataformatec/devise) to provide sms functions, easy to use and customize.
 
 This is the working version.
