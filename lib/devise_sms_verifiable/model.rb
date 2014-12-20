@@ -9,9 +9,18 @@ module Devise
         public_send("#{Devise::phone_confirmation_field}?")
       end
 
+      def sms_unconfirm!
+	unconfirm_hash = Hash[Devise::sms_answer_field, nil,
+		              Devise::phone_confirmation_field, false,
+			      Devise::sms_token_sent_at, nil,
+			      Devise::sms_token_confirmed_at, nil]
+        public_send(:update, unconfirm_hash)
+      end
+
       def sms_confirm!
         token = generate_token!
-        public_send(:update, Hash[Devise::sms_answer_field, token, :sms_token_sent_at, DateTime.now])
+        public_send(:update, Hash[Devise::sms_answer_field, token,
+				  :sms_token_sent_at, DateTime.now])
         token
       end
 
@@ -22,7 +31,13 @@ module Devise
       protected
 
       def generate_token!
-        rand(1000..2000)
+	meth = Devise::token_generator
+	token = if meth.is_a? Symbol
+		  rand(2000..4000)
+		elsif meth.is_a? Proc
+		  meth.call
+		end
+	token
       end
     end
   end

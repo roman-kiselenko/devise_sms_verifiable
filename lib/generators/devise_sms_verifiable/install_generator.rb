@@ -25,6 +25,9 @@ module DeviseSmsVerifiable
   #config.phone_confirmation_field = :phone_confirm
   # Path after successful confirmation
   #config.successful_path = '/'
+  # Token generator method(default 4 digit)
+  # must return valid token
+  #config.token_generator = -> { rand(1000..2000) }
   # SMS provider module(have default for STREAM-TELECOM)
   #config.sms_provider = DeviseSmsVerifiable::Provider
   # Send sms silent for test

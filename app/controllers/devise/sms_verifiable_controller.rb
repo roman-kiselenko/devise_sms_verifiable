@@ -22,8 +22,8 @@ class Devise::SmsVerifiableController < DeviseController
     provider = Devise::sms_provider
     if [number, provider].all? && !public_send("current_#{resource_name}").sms_confirmed?
       token = public_send("current_#{resource_name}").sms_confirm!
-      set_flash_message :notice, :send_token, phone: number
       provider.public_send(:send_sms, number, token)
+      set_flash_message :notice, :send_token, phone: number
     end
     render :new
   end
