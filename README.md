@@ -12,7 +12,8 @@ Rails 4.0.3
 Devise 3.2
 ```
 ## Getting started
-1. Add to `Gemfile` and `bundle install`
+1. Add to `Gemfile` and `bundle install`. Please be aware fresh version of this gem avalible
+only in my github repository.  I do not push this gem to rubygems.org
 
    ```ruby
    gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
