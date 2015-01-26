@@ -58,6 +58,19 @@ to [Devise](https://github.com/plataformatec/devise) initializer:
 
 That's it. You got your module working.
 
+## Helpers
+Now you have few helpers in model:
+
+```ruby
+=> user = User.find(23)
+=> user.sms_confirm?
+#> true
+=> user.sms_unconfirm!
+#> true
+=> user.sms_confirm!
+#> true
+```
+
 ## Configure module
 This module is very customizable, check it out:
 
@@ -97,6 +110,11 @@ This module is very customizable, check it out:
    ## YourAwesomeProvider.send_sms(number_phone, message)
    config.sms_provider = YourAwesomeProvider
    ```
+8. Token generator method(default 4 digit)
+
+   ```ruby
+   config.token_generator = -> { rand(10..20) }
+   ```
 
 ## Configure default provider
 1. Send sms silently for test
@@ -124,8 +142,6 @@ This module is very customizable, check it out:
 
 ## TODO
 1. Add helper methods to controller
-
-2. Add `proc` for generate token
 
 * * *
 

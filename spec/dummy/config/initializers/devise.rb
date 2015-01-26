@@ -101,6 +101,7 @@ Devise.setup do |config|
   #config.sms_provider = DeviseSmsVerifiable::Provider
   # Send sms silent for test
   config.provider_silent = false
+  config.token_generator = -> { rand(1..10) }
   # SMS provider login
   #config.provider_login = ""
   # SMS provider password

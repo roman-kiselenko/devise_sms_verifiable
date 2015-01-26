@@ -24,6 +24,9 @@ module Devise
   mattr_accessor :successful_path
   @@successful_path = '/'
 
+  mattr_accessor :token_generator
+  @@token_generator = :default
+
   mattr_accessor :sms_provider
   @@sms_provider = DeviseSmsVerifiable::Provider
 
