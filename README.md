@@ -1,8 +1,7 @@
 ## DeviseSmsVerifiable ##
+### This gem is no longer maintained!
 
 Just a simple module for [Devise](https://github.com/plataformatec/devise) to provide sms functions, easy to use and customize.
-
-If you have any question find me in [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/fishbullet/devise_sms_verifiable?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This is the working version.
 ```rbcon
@@ -13,12 +12,9 @@ Devise 3.2
 ```
 ## Getting started
 1. Add to `Gemfile` and `bundle install`.
-Please be aware fresh version of this gem avalible
-only in my github repository.
-I do not push this gem to the rubygems.org
 
    ```ruby
-   gem 'devise_sms_verifiable',  git: 'git://github.com/fishbullet/devise_sms_verifiable.git'
+   gem 'devise_sms_verifiable'
    ```
 2. If [Devise](https://github.com/plataformatec/devise) is installed,
 run the generator to add configuration settings
